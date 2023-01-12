@@ -1,36 +1,34 @@
-const socket = io("http://localhost:5700");
+const socket = io();
 
-function postProduct() {
-  let product = {
-    title: document.getElementById("title").value,
-    category: document.getElementById("category").value,
-    price: document.getElementById("price").value,
-    code: document.getElementById("code").value,
-    stock: document.getElementById("stock").value,
+const titleInput = document.getElementById("title");
+const categoryInput = document.getElementById("category");
+const priceInput = document.getElementById("price");
+const codeInput = document.getElementById("code");
+const stockInput = document.getElementById("stock");
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const newProduct = {
+    title: titleInput.value,
+    category: categoryInput.value,
+    price: priceInput.value,
+    code: codeInput.value,
+    stock: stockInput.value
   };
 
-  socket.emit("newProduct", product);
-}
-
-function deleteProduct(id) {
-  console.log(id);
-  socket.emit("deleteProduct", id);
-}
+  socket.emit("products", newProduct);
+  titleInput.value = "";
+  categoryInput.value = ""; 
+  priceInput.value = "";
+  codeInput.value = "";
+  stockInput.value = "";
+});
 
 socket.on("products", (data) => {
-  let historial = document.getElementById("history");
-  historial.innerHTML = "";
-
-  data.forEach((element) => {
-    historial.innerHTML += `
-                    <tr>
-                    <td> ${element.title} </td>
-                    <td>${element.categoria}</td>
-                    <td>$ ${element.price}</td>
-                    <td>${element.code}</td>
-                    <td>${element.stock} Unidades</td>
-                    </tr>
-                    <button onclick="deleteProduct(${element.id})">Eliminar</button>
-    `;
-  });
+  const products = data
+    .map((prod) => {
+      return `title: ${prod.title}, category: ${prod.category}, price: ${prod.price}, code: ${prod.code}, stock: ${prod.stock}`;
+    })
+    .join("<br>");
+  document.querySelector("tr").innerHTML = products;
 });

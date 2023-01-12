@@ -39,9 +39,24 @@ io.on("connection", (socket) => {
     console.log("Se ha añadido un producto");
   });
 
+  socket.on('products', (data) => {
+    if (data != null) {
+        const product = {
+        title: data.title,
+        category: data.category,
+        price: data.price,
+        code: data.code,
+        stock: data.stock
+        }
+        products.push(product);
+    }
+    io.emit('products', products)
+  });
+
   socket.on("deleteProduct", (id) => {
     ProductManager.deleteProduct(id);
     io.emit("products", historial);
     console.log("Se ha eliminado un producto");
   });
 });
+
