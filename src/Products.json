@@ -1,0 +1,82 @@
+[
+	{
+		"title": "kit-kat",
+		"category": "chocolate",
+		"price": 250,
+		"code": "abc001",
+		"stock": 30,
+		"id": 1
+	},
+	{
+		"title": "kinder",
+		"category": "chocolate",
+		"price": 300,
+		"code": "abc002",
+		"stock": 30,
+		"id": 2
+	},
+	{
+		"title": "block",
+		"category": "chocolate",
+		"price": 170,
+		"code": "abc003",
+		"stock": 30,
+		"id": 3
+	},
+	{
+		"title": "shot",
+		"category": "chocolate",
+		"price": 200,
+		"code": "abc004",
+		"stock": 30,
+		"id": 4
+	},
+	{
+		"title": "milka",
+		"category": "chocolate",
+		"price": 230,
+		"code": "abc005",
+		"stock": 30,
+		"id": 5
+	},
+	{
+		"title": "cadbury",
+		"category": "chocolate",
+		"price": 250,
+		"code": "abc006",
+		"stock": 30,
+		"id": 6
+	},
+	{
+		"title": "hersheys",
+		"category": "chocolate",
+		"price": 325,
+		"code": "abc007",
+		"stock": 30,
+		"id": 7
+	},
+	{
+		"title": "vizzio",
+		"category": "chocolate",
+		"price": 370,
+		"code": "abc008",
+		"stock": 30,
+		"id": 8
+	},
+	{
+		"title": "milka leger2",
+		"category": "chocolate",
+		"price": 200,
+		"code": "abc009",
+		"stock": 30,
+		"id": 9
+	},
+	{
+		"title": "arcor",
+		"category": "chocolate",
+		"price": 120,
+		"code": "abc010",
+		"stock": 30,
+		"id": 10
+	}
+]

@@ -1,0 +1,85 @@
+<div>
+  <h1>Formulario para añadir productos</h1>
+
+  <form>
+    <label for="tittle">Nombre:</label><br />
+    <input id="title" name="title" required />
+    <label for="category">Categoría:</label><br />
+    <input id="category" name="category" required />
+    <label for="price">Precio:</label><br />
+    <input id="price" type="number" name="price" required />
+    <label for="code">Código:</label><br />
+    <input id="code" name="code" required />
+    <label for="stock">Stock:</label><br />
+    <input id="stock" type="number" name="stock" required />
+  </form>
+
+  <button id="send">Enviar</button>
+
+  <h1>Historial de productos</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <td>Nombre</td>
+        <td>Categoría</td>
+        <td>Precio</td>
+        <td>Código</td>
+        <td>Stock</td>
+      </tr>
+    </thead>
+
+    <tbody id="history">
+    </tbody>
+
+  </table>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/index.js"></script>
+
+<script>
+  
+const socket = io("http://localhost:3000")
+
+let products = []
+
+document.getElementById("send").addEventListener("click", postProduct)
+
+
+function postProduct(event)  {
+  event.preventDefault()
+  let product = {
+  "title" : document.getElementById("title").value,
+  "categoria" : document.getElementById("category").value,
+  "price" : document.getElementById("price").value,
+  "code" : document.getElementById("code").value,
+  "stock" : document.getElementById("stock").value,
+  }
+  socket.emit("newProduct", product)
+}
+
+
+function deleteProduct(id) {
+  socket.emit("deleteProduct", id)
+}
+
+
+socket.on("products", data => {
+  let historial = document.getElementById("history")
+  historial.innerHTML = ""
+  data.map(element => {
+    historial.innerHTML += `
+                    <tr>
+                    <td> ${element.title} </td>
+                    <td>${element.categoria}</td>
+                    <td>$ ${element.price}</td>
+                    <td>${element.code}</td>
+                    <td>${element.stock} Unidades</td>
+                    </tr>
+                    <button onclick="deleteProduct(${element.id})">Eliminar</button>
+    `
+  })
+})
+
+</script>
