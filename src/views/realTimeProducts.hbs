@@ -3,13 +3,13 @@
 
   <form>
     <label for="tittle">Nombre:</label><br />
-    <input id="title" name="title" required />
+    <input id="title" name="title" required /><br />
     <label for="category">Categoría:</label><br />
-    <input id="category" name="category" required />
+    <input id="category" name="category" required /><br />
     <label for="price">Precio:</label><br />
-    <input id="price" type="number" name="price" required />
+    <input id="price" type="number" name="price" required /><br />
     <label for="code">Código:</label><br />
-    <input id="code" name="code" required />
+    <input id="code" name="code" required /><br />
     <label for="stock">Stock:</label><br />
     <input id="stock" type="number" name="stock" required />
   </form>
@@ -36,15 +36,15 @@
 </div>
 
 <script src="/socket.io/socket.io.js"></script>
-<script src="/js/index.js"></script>
+<script src="/js/main.js"></script>
 
 <script>
   
-const socket = io("http://localhost:3000")
+const socket = io("http://localhost:5700")
 
 let products = []
 
-document.getElementById("send").addEventListener("click", postProduct)
+document.querySelector("#send").addEventListener("click", postProduct)
 
 
 function postProduct(event)  {

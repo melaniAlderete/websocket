@@ -1,6 +1,6 @@
 import { Router } from "express";
 import express from "express";
-import ProductManager from "../helpers/ProductManager.js";
+import ProductManager from "../helpers/productManager.js";
 
 const router = express.Router();
 let productsUploaded = ProductManager.getProducts();

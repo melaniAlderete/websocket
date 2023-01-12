@@ -1,6 +1,4 @@
-const socket = io("http://localhost:3000");
-let arrayProductos = [];
-document.getElementById("send").addEventListener("click", postProduct);
+const socket = io("http://localhost:5700");
 
 function postProduct() {
   let product = {

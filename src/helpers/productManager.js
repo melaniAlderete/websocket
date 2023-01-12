@@ -66,4 +66,4 @@ class ProductManager {
   }
 }
 
-export default new ProductManager("./Products.json");
+export default new ProductManager("../Products.json");
